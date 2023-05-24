@@ -1,0 +1,101 @@
+body {
+    background-color: rgb(46, 196, 241);
+}
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.card-container>div {
+    background-color: rgb(44, 227, 240);
+    padding: 1em;
+    margin: 1em;
+    width: 150px;
+    border-radius: 12px;
+}
+
+.card-container>div:nth-child(odd) {
+    background-color: rgb(39, 52, 173);
+}
+
+.card-container>div:nth-child(-n+2) {
+    background-color: antiquewhite;
+}
+
+.card-container>div:hover {
+    background-color: rgb(61, 63, 212);
+}
+
+.card-container>div:nth-last-child(1) {
+    background-color: blue;
+}
+
+
+.card-container div:nth-child(7) {
+    background-color: rgb(164, 164, 235);
+}
+
+.card-container div:nth-child(5):hover {
+    background-color: white;
+    color: black;
+    border: 3px red dashed;
+}
+
+#inner-card {
+    transition: transform 2s;
+    transform-style: preserve-3d;
+}
+
+.card-container>div:nth-last-child(2):hover #inner-card {
+    transform: rotateY(180deg)
+}
+
+#identity, #stats {
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+#stats {
+    
+    transform: rotateY(180deg);
+}
+
+#box {
+    width: 50px;
+    height: 50px;
+    background-color: rgb(24, 186, 214);
+    margin: 0 auto;
+    border-radius: 12px;
+    border: 2px dashed turquoise;
+
+    animation-name: turn;
+    animation-delay: 0.5s;
+    animation-duration: 0.7s;
+    animation-iteration-count: infinite;
+}
+
+#inner-box {
+    position: relative;
+    background-color: rgb(25, 137, 228);
+    width: 25px;
+    height: 25px;
+    margin-top: 13px;
+    margin-left: 12px;
+
+}
+
+@keyframes turn {
+    from {
+        transform: rotate(0);
+    }
+    to {
+        transform: rotate(180deg);
+    }
+}
+
+
+
+
+
