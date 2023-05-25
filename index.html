@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Form Practice</title>
+</head>
+
+<body>
+
+    <form target="_blank">
+
+        <!-- label, input, label, input label input and then submit button-->
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" autocomplete="off" autofocus required>
+        <br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Type your email here!!!!!!" autocomplete="off">
+        <br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <br><br>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date">
+
+        <h4>Sign up?</h4>
+        <label for="signup-yes">Yes</label>
+        <input type="radio" id="signup-yes" name="signup" value="yes">
+        <label for="signup-no">No</label>
+        <input type="radio" id="signup-no" name="signup" value="no">
+        <label for="signup-maybe">Maybe</label>
+        <input type="radio" id="signup-maybe" name="signup" value="maybe">
+
+
+        <h4>Newsletter?</h4>
+        <input type="checkbox" id="special" name="news" value="special">
+        <label for="special">I want one special newsletter</label>
+        <input type="checkbox" id="normal" name="news" value="normal">
+        <label for="normal">I want one normal newsletter</label>
+        <input type="checkbox" id="standard" name="news" value="standard">
+        <label for="standard">I want a standard newsletter</label>
+
+        <h4>Dropdown Selection</h4>
+        <label for="languages">Choose your favorite language!</label>
+        <select id="languages" name="languages" size="2">
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="javascript">Javascript</option>
+            <option value="web-apis">Web APIs</option>
+        </select>
+
+        <h4>Data list potential auto-complete</h4>
+        <input list="colors" name="colors">
+        <datalist id="colors">
+            <option value="Blue">
+            <option value="Black">
+            <option value="Brown">
+            <option value="Green">
+            <option value="Yellow">
+            <option value="Red">
+        </datalist>
+
+        <h4>Please give us your feedback about this form!</h4>
+        <label for="feedback">Give us feedback!</label>
+        <textarea name="feedback" id="feedback" rows="5" cols="20" placeholder="Your feedback!"></textarea>
+
+        <h4>Select Color</h4>
+        <label for="favorite-color">Select your favorite color</label>
+        <br>
+        <input type="color" id="favorite-color" name="favorite-color">
+
+
+        <br><br>
+        <!-- <input type="submit" value="submit">e -->
+        <button type="submit">Submit me please!</button>
+
+
+
+    </form>
+
+</body>
+
+</html>
