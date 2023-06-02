@@ -6,14 +6,14 @@ var confirmEmailElement = $("#confirm-email");
 
 var allUsers = [];
 
-console.log(formElement, nameElement, emailElement, confirmEmailElement)
+// console.log(formElement, nameElement, emailElement, confirmEmailElement)
 
 function onFormSubmit(event) {
 
     event.preventDefault(); // prevent the page from reloading when the script is sent in
     console.log(nameElement.val());
     // simple if statments to compare if the emails that are entered are the same
-    if(emailElement.val().toLowerCase() !== confirmEmailElement.val().toLowerCase()){
+    if (emailElement.val().toLowerCase() !== confirmEmailElement.val().toLowerCase()) {
         alert("your emails to not match!!");
         return;
     }
@@ -25,7 +25,7 @@ function onFormSubmit(event) {
     }
 
     var users = JSON.parse(localStorage.getItem('users')); // grab users from local storage if they exist, else it will return null
-    console.log(users)
+    // console.log(users)
     // if statement for what to do with the users from local storage
     if (users === null) {
         // push newUser into empty users array
@@ -44,11 +44,16 @@ function onFormSubmit(event) {
 // simple on submit for our onFormSubmit() function
 formElement.on('submit', onFormSubmit);
 
+var catUrl = "https://catfact.ninja/fact"
+var boredUrl = "https://www.boredapi.com/api/activity";
+
 // function for doing a fetch request
 function displayCatFactPlease() {
 
-    fetch('https://catfact.ninja/fact')
+    fetch(boredUrl)
+
         .then(res => res.json()) // res.json() 
+
         .then(data => {
             // Handle the retrieved data
             console.log(data);
@@ -80,3 +85,84 @@ $.ajax({
 
 
 
+var newButton = $("#new-api");
+
+console.log(newButton, "this is my new-api button");
+
+var urlList = ["https://official-joke-api.appspot.com/random_joke", "https://catfact.ninja/fact", "https://www.boredapi.com/api/activity" ]
+
+var jokeArray = [];
+
+function superCoolClick(event) {
+
+
+    // console.log(event)
+
+    var randomIndex = Math.floor(Math.random() * urlList.length);
+    console.log(randomIndex)
+
+    fetch(urlList[[0]])
+        .then(response => response.json())
+        .then(data => {
+
+            var jokesExist = JSON.parse(localStorage.getItem("jokes"))
+
+            console.log(jokesExist)
+
+            if(jokesExist === null){
+                jokeArray.push(data);
+                localStorage.setItem("jokes", JSON.stringify(jokeArray))
+            } else if (jokesExist.length > 0) {
+                jokeArray = jokesExist;
+
+                jokeArray.push(data);
+                localStorage.setItem("jokes", JSON.stringify(jokeArray))
+            }
+        })
+        .catch(error => {
+            console.error(error);
+        })
+}
+
+newButton.on("click", superCoolClick); // newbutton click event
+
+var displayJokeElement = $("#display-joke");
+
+function letsLaugh() {
+    var jokeContainer = $("<div>")
+    var setupElement = $("<p>");
+    var punchlineElement = $("<p>");
+
+    // setupElement.append(punchlineElement);
+    jokeContainer.append(setupElement);
+    jokeContainer.append(punchlineElement);
+
+
+    var jokesExist = JSON.parse(localStorage.getItem("jokes"))
+
+
+    if(jokesExist === null){
+        setupElement.text("No jokes exist! There is nothing in local storage!!!!")
+
+        displayJokeElement.append(setupElement)
+
+
+    } else if (jokesExist.length > 0) {
+        jokeArray = jokesExist;
+
+        for(var i = 0; i < jokeArray.length; i++){
+            setupElement.text(jokeArray[i].setup);
+            punchlineElement.text(jokeArray[i].punchline)
+            displayJokeElement.append(jokeContainer)
+        }
+
+
+
+
+        console.log(jokeArray)
+
+    }
+
+}
+
+letsLaugh();
