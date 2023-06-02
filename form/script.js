@@ -89,7 +89,7 @@ var newButton = $("#new-api");
 
 console.log(newButton, "this is my new-api button");
 
-var urlList = ["https://official-joke-api.appspot.com/random_joke", "https://catfact.ninja/fact", "https://www.boredapi.com/api/activity" ]
+var urlList = ["https://official-joke-api.appspot.com/random_joke", "https://catfact.ninja/fact", "https://www.boredapi.com/api/activity"]
 
 var jokeArray = [];
 
@@ -109,7 +109,7 @@ function superCoolClick(event) {
 
             console.log(jokesExist)
 
-            if(jokesExist === null){
+            if (jokesExist === null) {
                 jokeArray.push(data);
                 localStorage.setItem("jokes", JSON.stringify(jokeArray))
             } else if (jokesExist.length > 0) {
@@ -129,28 +129,34 @@ newButton.on("click", superCoolClick); // newbutton click event
 var displayJokeElement = $("#display-joke");
 
 function letsLaugh() {
-    var jokeContainer = $("<div>")
-    var setupElement = $("<p>");
-    var punchlineElement = $("<p>");
-
-    // setupElement.append(punchlineElement);
-    jokeContainer.append(setupElement);
-    jokeContainer.append(punchlineElement);
 
 
+    // check if the jokes exist
     var jokesExist = JSON.parse(localStorage.getItem("jokes"))
 
+    // if not jokes are in local storage null will return as the value
+    if (jokesExist === null) {
 
-    if(jokesExist === null){
+        // tell the user no jokes exist
         setupElement.text("No jokes exist! There is nothing in local storage!!!!")
-
+        // append our text
         displayJokeElement.append(setupElement)
 
 
     } else if (jokesExist.length > 0) {
+        // if jokes exist, set our empty array to what is in local storage
         jokeArray = jokesExist;
-        // problem here is it only shows one joke. How can we show all the jokes?!
-        for(var i = 0; i < jokeArray.length; i++){
+        // display jokes
+        for (var i = 0; i < jokeArray.length; i++) {
+            // create some html elements with jquery
+            var jokeContainer = $("<div>")
+            var setupElement = $("<p>");
+            var punchlineElement = $("<p>");
+
+            // append html elements
+            jokeContainer.append(setupElement);
+            jokeContainer.append(punchlineElement);
+            // display joke
             setupElement.text(jokeArray[i].setup);
             punchlineElement.text(jokeArray[i].punchline)
             displayJokeElement.append(jokeContainer)
