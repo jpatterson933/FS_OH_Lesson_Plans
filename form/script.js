@@ -149,7 +149,7 @@ function letsLaugh() {
 
     } else if (jokesExist.length > 0) {
         jokeArray = jokesExist;
-
+        // problem here is it only shows one joke. How can we show all the jokes?!
         for(var i = 0; i < jokeArray.length; i++){
             setupElement.text(jokeArray[i].setup);
             punchlineElement.text(jokeArray[i].punchline)
