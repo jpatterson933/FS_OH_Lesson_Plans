@@ -161,10 +161,6 @@ function letsLaugh() {
             punchlineElement.text(jokeArray[i].punchline)
             displayJokeElement.append(jokeContainer)
         }
-
-
-
-
         console.log(jokeArray)
 
     }
