@@ -1,6 +1,4 @@
 
-
-
 function start(racers) {
     return new Promise((resolve, reject) => {
 
