@@ -29,7 +29,7 @@ Character.init(
             type: DataTypes.BOOLEAN
         },
         weaknesses: {
-            type: DataTypes.ARRAY(DataTypes.STRING)
+            type: DataTypes.JSON // CHANGE THIS TO .JSON due to mysql syntax error
         }
     },
     {
