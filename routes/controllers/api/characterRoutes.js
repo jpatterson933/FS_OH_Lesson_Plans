@@ -50,8 +50,6 @@ router.put('/:id', async (req, res) => {
                     character_id: req.params.id
                 }
             }
-
-
         )
         if (!characterData) {
             res.status(404).json({ message: "Can't delete what does not exist" })
@@ -63,8 +61,5 @@ router.put('/:id', async (req, res) => {
         res.status(500).json(err)
     }
 })
-
-
-
 
 module.exports = router;

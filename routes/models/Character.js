@@ -30,6 +30,14 @@ Character.init(
         },
         weaknesses: {
             type: DataTypes.JSON // CHANGE THIS TO .JSON due to mysql syntax error
+        },
+        // we are settign this up as a reference for Item
+        item_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'character',
+                key: 'character_id'
+            }
         }
     },
     {
